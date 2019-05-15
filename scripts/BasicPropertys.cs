@@ -54,7 +54,7 @@ public class BasicPropertys
 // add from input to the current propertys
 // current = input
 
-     public void add_propertys(BasicPropertys input)
+     public void addPropertys(BasicPropertys input)
      {   this.Frontend += input.Frontend;
          this.Backend += input.Backend;
          this.Graphics += input.Graphics;

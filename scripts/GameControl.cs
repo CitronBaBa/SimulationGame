@@ -11,6 +11,7 @@ public class GameControl
 {   private Company PlayerCompany;
     private List<Employee> PrebuiltEmployees = new List<Employee>();
     private List<Contract> PrebuiltContracts = new List<Contract>();
+    private List<Asset> PrebuiltAssets = new List<Asset>();
     private float time0 = 0.0f;
     private float interval = 5.0f;  // the real time for each day in seconds
     private int day = 0;
@@ -32,7 +33,7 @@ public class GameControl
 
     public void start()
     {   PlayerCompany = new Company("California Technology");
-        intial_settings();
+        intialSettings();
         testPause();
     }
 
@@ -44,38 +45,38 @@ public class GameControl
     public void update()
     {   if(Time.time-time0>interval && !pause)
         {   time0 = Time.time;
-            print_time();
-            time_update_model();
+            printTime();
+            timeUpdateModel();
             //flag the Update
             newUpdate = true;
         }
     }
 
-    void time_update_model()
-    {   PlayerCompany.update_company();
-        PlayerCompany.print_company();
+    void timeUpdateModel()
+    {   PlayerCompany.updateCompany();
+        PlayerCompany.printCompany();
         day ++;
     }
 
-    void intial_settings()
+    void intialSettings()
     {   Employee e1 = new Employee("Lucy", 8, "SpiderMan", "hahaha",new BasicPropertys(50,51,52));
         Employee e2 = new Employee("Tracy", 5, "SpiderMan", "hahaha",new BasicPropertys(50,33,51));
         Employee e3 = new Employee("Lisbon", 10, "SpiderMan", "hahaha",new BasicPropertys(50,33,76));
         Employee e4 = new Employee("Sam", 1, "SpiderMan", "hahaha",new BasicPropertys(20,23,16));
+        Asset a1 =  new Asset("Server Room", 12, "server is good!", "You can buy server now", 13);
         PrebuiltEmployees.Add(e1);
         PrebuiltEmployees.Add(e2);
         PrebuiltEmployees.Add(e3);
         PrebuiltEmployees.Add(e4);
+        PrebuiltAssets.Add(a1);
 
-        PlayerCompany.buy_asset(new Asset("Mercedes C-class",200000f));
+        PlayerCompany.printEmployees();
+        PlayerCompany.printAssets();
+        PlayerCompany.printCompany();
 
-        PlayerCompany.print_employees();
-        PlayerCompany.print_assets();
-        PlayerCompany.print_company();
-
-        PlayerCompany.hire_employee(e1);
+        PlayerCompany.hireEmployee(e1);
         PrebuiltEmployees.Remove(e1);
-        PlayerCompany.hire_employee(e3);
+        PlayerCompany.hireEmployee(e3);
         PrebuiltEmployees.Remove(e3);
 
         PrebuiltContracts.Add(new Contract("Bristol Romantic Website","romance",
@@ -87,15 +88,15 @@ public class GameControl
        PrebuiltContracts.Add(new Contract("RAF webiste","raf",
             Industry.Military,500,1,170, new BasicPropertys(200,600,50)));
 
-        PlayerCompany.take_project(PrebuiltContracts[0],new string[] {"Lucy"});
+        PlayerCompany.takeProject(PrebuiltContracts[0],new string[] {"Lucy"});
         DeletePrebuiltContract(PrebuiltContracts[0]);
         //ontract contract = PrebuiltContracts[1];
         if(contract ==null) Debug.Log("wfwfwfwfwfw");
-        PlayerCompany.take_project(contract,new string[] {"Lisbon"});
+        PlayerCompany.takeProject(contract,new string[] {"Lisbon"});
         DeletePrebuiltContract(PrebuiltContracts[0]);
     }
 
-    public void print_time()
+    public void printTime()
     {   Debug.Log("");
         Debug.Log("//// "+ interval+" seconds passed//// current situation:");
         Debug.Log("Day "+day+":");
@@ -113,6 +114,10 @@ public class GameControl
     {   PrebuiltContracts.Remove(c);
     }
 
+    public void DeletePrebuiltAsset(Asset a)
+    {   PrebuiltAssets.Remove(a);
+    }
+
     public List<Employee> getPrebuiltEmployees()
     {   return PrebuiltEmployees;
     }
@@ -120,5 +125,10 @@ public class GameControl
     public List<Contract> getPrebuiltContracts()
     {   return PrebuiltContracts;
     }
+
+    public List<Asset> getPrebuiltAssets()
+    {   return PrebuiltAssets;
+    }
+    
 
 }

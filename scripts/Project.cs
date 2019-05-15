@@ -1,7 +1,8 @@
 using System;
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
+
 [Serializable]
 public class Project
 {   private Contract contract;
@@ -80,13 +81,13 @@ public class Project
     }
 
 // called on everyday
-    public bool daily_operation()
+    public bool dailyOperation()
     {   projectproceed();
         projectAdjust();
 
-        if(finishing_judge())
-        {   free_employees();
-            Debug.Log("Project "+contract.getName()+" finished");
+        if(finishingJudge())
+        {   freeEmployees();
+            printFinished();
             return true;
         }
         return false;
@@ -95,7 +96,7 @@ public class Project
 // currently no work switching between employees,
 // just add to all the propertys like 3 bars
     private void projectproceed()
-    {   progress.add_propertys(workforce);
+    {   progress.addPropertys(workforce);
         currentDays ++;
     }
 
@@ -123,20 +124,25 @@ public class Project
     }
 
 // return true when project finished
-    private bool finishing_judge()
+    private bool finishingJudge()
     {   if(listOfPropertyLeft.Count==0) return true;
         return false;
     }
 
 
-    private void free_employees()
+    private void freeEmployees()
     {   foreach(Employee e in manpowers)
         e.freefromwork();
     }
 
-    public void print_project()
+    public void printProject()
     {   Debug.Log("Project "+contract.getName()+"--current Progress--"+"Frontend:"+progress.Frontend
         +"/"+workload.Frontend+", Backend:"+progress.Backend+"/"+workload.Backend+
         ", Creativity:"+progress.Graphics+"/"+workload.Graphics);
+        ;
+    }
+
+    public void printFinished()
+    {   Debug.Log("Project "+contract.getName()+" finished");
     }
 }

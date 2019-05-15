@@ -3,11 +3,11 @@ using System;
 public class Employee
 {   private string name;
     private BasicPropertys propertys;
-    private string image_filepath;
+    private string imageFilepath;
     private bool occupied = false;
     private int salary;
-    string jobTitle;
-    string description;
+    private string jobTitle;
+    private string description;
 
     public static void Main(string[] args)
     {   Console.WriteLine("Hello World");
@@ -37,7 +37,7 @@ public class Employee
     public void freefromwork()
     {   occupied = false;
     }
-    public bool get_status()
+    public bool getStatus()
     {   return occupied;
     }
 }

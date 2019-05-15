@@ -36,8 +36,8 @@ public class Control : MonoBehaviour
     {   FileHandler handler = new FileHandler();
         handler.saveObject(gameControl,"gameControl");
         GameControl readOut = (GameControl) handler.readObject("gameControl");
-        readOut.print_time();
-        readOut.print_time();readOut.print_time();
+        readOut.printTime();
+        readOut.printTime();readOut.printTime();
     }
 
     public void saveGame()
