@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HireButton : MonoBehaviour
+public class TakeContractButton : MonoBehaviour
 {   GameObject inputfield;
     GameControl control;
-    Employee employee;
+    Contract contract;
     GameObject panel;
 
     void Start()
@@ -15,8 +15,8 @@ public class HireButton : MonoBehaviour
         control = Control.ConnectToGameModel();
     }
 
-    public void setEmployee(Employee e)
-    {   this.employee = e;
+    public void setContract(Contract c)
+    {   this.contract = c;
     }
 
     public void setPanel(GameObject panel)
@@ -24,15 +24,12 @@ public class HireButton : MonoBehaviour
     }
 
     void TaskOnClick()
-    {   if(employee != null)
-        {   control.getUserCompany().hireEmployee(employee);
-            control.DeletePrebuiltEmployee(employee);
-            Destroy(panel);
+    {   if(contract != null)
+        {   if(control.getUserCompany().takeProject(contract,new string[] {"Lucy"}))
+            {   control.DeletePrebuiltContract(contract);
+                Destroy(panel);
+            }
         }
     }
 
-    void DrawPanel()
-    {
-
-    }
 }
