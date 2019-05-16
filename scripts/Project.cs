@@ -23,6 +23,8 @@ public class Project
     public BasicPropertys getProgress() {  return progress;}
     public int getRemainingTime() { return contract.getTimeLimit()-currentDays;}
 
+    private Alert alert = new Alert("");
+
 //need fail function
 
     public Project(Contract contract, List<Employee> employees)
@@ -117,6 +119,7 @@ public class Project
 
     }
 
+// check if requirement is reached or not
     private void workOverFlowHandling(Property targetTask)
     {   int maxvalue = workload.getPropertyQuant(targetTask);
         if(progress.getPropertyQuant(targetTask)>maxvalue)

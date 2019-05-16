@@ -16,6 +16,9 @@ public class GameControl
     private float interval = 3.0f;  // the real time for each day in seconds
     private int day = 0;
     private bool pause = false;
+
+    private Alert alert = new Alert("");
+
     public void pauseGame() {   pause = true;}
     public void resumeGame() {   pause = false;}
 
@@ -54,6 +57,9 @@ public class GameControl
 
     void timeUpdateModel()
     {   PlayerCompany.updateCompany();
+        if (PlayerCompany.getMoney < 0){
+            alert.setMessage("Your company went bankrupt! Game Over!");
+        }
         PlayerCompany.printCompany();
         day ++;
     }
