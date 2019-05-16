@@ -17,7 +17,7 @@ public class Project
     private BasicPropertys workforce;
 
     public int getAward() {   return contract.getAward();}
-    public Industry getIndustry() {  return contract.getIndustry();}
+    public string getIndustry() {  return contract.getIndustry();}
     public string getName() {  return contract.getName();}
 
     public BasicPropertys getProgress() {  return progress;}

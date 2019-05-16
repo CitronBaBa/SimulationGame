@@ -9,9 +9,9 @@ public class Contract
     private int award;
     private int level;
     private int timeLimit;
-    private Industry industry;
+    private string industry;
 
-    public Contract(string name, string description, Industry industry, int award,
+    public Contract(string name, string description, string industry, int award,
                   int level, int timeLimit, BasicPropertys propertys)
     {   this.name = name;
         this.description = description;
@@ -27,7 +27,7 @@ public class Contract
     public int getLevel() { return level;}
     public int getAward() { return award;}
     public int getTimeLimit() { return timeLimit;}
-    public Industry getIndustry() { return industry;}
+    public string getIndustry() { return industry;}
 
     public BasicPropertys getPropertys()
     {   return propertys;
@@ -38,7 +38,7 @@ public class Contract
     }
 
     public static void Main(string[] args)
-    {   Console.WriteLine(Industry.Military.ToString());
+    {
     }
 
 }
