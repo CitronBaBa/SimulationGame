@@ -86,13 +86,15 @@ public class Company //: CompanyInterface
 // sign up a project, asign employee by name
 // if no employee has correspondent name return false
 // if employee is busy return false;
-    public bool takeProject(Contract contract, string[] CrewNames)
-    {   List<Employee> crew = new List<Employee>();
-        foreach (string name in CrewNames)
-        {   Employee e;
-            if(!employees.TryGetValue(name, out e)) return false;
-            if(e.getStatus()) return false;
-            crew.Add(e);
+    public bool takeProject(Contract contract)
+    {   if (projectsEngaged.Count == 1){
+            alert.setMessage("You have already activated a project");
+            return false;
+        }
+        List<Employee> crew = new List<Employee>();
+        foreach (var item in employees)
+        {
+            crew.Add(item.Value);
         }
         Project newproject = new Project(contract,crew);
         projectsEngaged.Add(newproject);

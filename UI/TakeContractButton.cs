@@ -25,7 +25,7 @@ public class TakeContractButton : MonoBehaviour
 
     void TaskOnClick()
     {   if(contract != null)
-        {   if(control.getUserCompany().takeProject(contract,new string[] {"Lucy"}))
+        {   if(control.getUserCompany().takeProject(contract))
             {   control.DeletePrebuiltContract(contract);
                 Destroy(panel);
             }
