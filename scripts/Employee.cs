@@ -3,7 +3,6 @@ using System;
 public class Employee
 {   private string name;
     private BasicPropertys propertys;
-    private string imageFilepath;
     private bool occupied = false;
     private int salary;
     private string jobTitle;
