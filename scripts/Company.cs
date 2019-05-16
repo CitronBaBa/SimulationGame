@@ -65,7 +65,7 @@ public class Company //: CompanyInterface
 // get reward from assets
     public void updateAssets()
     {   foreach (Asset a in assets)
-        money += a.reward;
+        money += a.getReward();
     }    
 
 // proceed every project

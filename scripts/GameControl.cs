@@ -57,7 +57,7 @@ public class GameControl
 
     void timeUpdateModel()
     {   PlayerCompany.updateCompany();
-        if (PlayerCompany.getMoney < 0){
+        if (PlayerCompany.getMoney() < 0){
             alert.setMessage("Your company went bankrupt! Game Over!");
         }
         PlayerCompany.printCompany();
@@ -80,12 +80,9 @@ public class GameControl
        PrebuiltContracts.Add(new Contract("RAF webiste","raf",
             Industry.Military,500,1,170, new BasicPropertys(200,600,50)));
 
-        PlayerCompany.takeProject(PrebuiltContracts[0],new string[] {"Lucy"});
         DeletePrebuiltContract(PrebuiltContracts[0]);
         //ontract contract = PrebuiltContracts[1];
         if(contract ==null) Debug.Log("wfwfwfwfwfw");
-        PlayerCompany.takeProject(contract,new string[] {"Lisbon"});
-        DeletePrebuiltContract(PrebuiltContracts[0]);
     }
 
     public void printTime()
